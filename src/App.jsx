@@ -5,6 +5,8 @@ import Login from './components/Authentication/Login'
 import Signup from './components/Authentication/Signup'
 import SignupAsContractor from './components/Authentication/SignupAsContractor'
 import SignupAsMusician from './components/Authentication/SignupAsMusician'
+import CreateJob from './components/ContractorApp/CreateJob'
+import MyJobs from './components/ContractorApp/MyJobs'
 
 const App = () => {
   return (
@@ -15,6 +17,8 @@ const App = () => {
         <Route path="/signup_as_contractor" element={<SignupAsContractor />} />
         <Route path="/signup_as_musician" element={<SignupAsMusician />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/create_job" element={<CreateJob />} />
+        <Route path="/my_jobs" element={<MyJobs />} />
       </Routes>
     </Router>
   );
