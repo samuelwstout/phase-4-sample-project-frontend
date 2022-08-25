@@ -7,7 +7,7 @@ const NavbarContractor = () => {
       <ul>
         <li><Link to="/">Freenote</Link></li>
         <li><Link to="/create_job">Create Job</Link></li>
-        <li><Link to="/my_jobs">My Job</Link></li>
+        <li><Link to="/my_jobs">My Jobs</Link></li>
       </ul>
     </div>
   )

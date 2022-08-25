@@ -14,7 +14,9 @@ const SignupAsMusician = () => {
         <input placeholder='Bio'></input>
         <p>Import video or audio files of you performing (at least 2)</p>
         <button>Select files</button>
-        <button>Create my account</button>
+        <br />
+        <br />
+        <button><Link to="/find_work">Create my account</Link></button>
         <h4>Already have an account? <button><Link to="/login">Log in</Link></button></h4>
     </div>
   )

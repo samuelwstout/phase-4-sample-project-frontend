@@ -5,6 +5,7 @@ const NavbarMusician = () => {
   return (
     <div>
       <ul>
+      <li><Link to="/">Freenote</Link></li>
         <li><Link to="/find_work">Find Work</Link></li>
         <li><Link to="/my_applications">My Applications</Link></li>
       </ul>
