@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const SignupAsContractor = () => {
   return (
@@ -11,7 +12,7 @@ const SignupAsContractor = () => {
             <input placeholder='Password'></input>
             <input type='submit'></input>
         </form>
-        <h4>Already have an account? Sign in</h4>
+        <h4>Already have an account? <button><Link to="/login">Log in</Link></button></h4>
     </div>
   )
 }

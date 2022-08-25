@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Login = () => {
   return (
@@ -7,7 +8,7 @@ const Login = () => {
       <input placeholder='Email'></input>
       <input placeholder='Password'></input>
       <button>Log in</button>
-      <h4>Don't have a Freenote account? Sign up</h4>
+      <h4>Don't have a Freenote account? <button><Link to="/signup">Sign up</Link></button></h4>
     </div>
   )
 }
