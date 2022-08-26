@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Landingpage from './components/Static/Landingpage'
 import Login from './components/Authentication/Login'
@@ -12,13 +12,23 @@ import MyApplications from './components/MusicianApp/MyApplications'
 import ContractorProfile from './components/ContractorApp/ContractorProfile'
 
 const App = () => {
+
+  const [currentMusician, setCurrentMusician] = useState({})
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  const loginMusician = (musician) => {
+    setCurrentMusician(musician)
+    setLoggedIn(true)
+  }
+
   return (
     <Router>
+      { loggedIn ? <h1>Hey We're Logged In!</h1> : null }
       <Routes>
         <Route path="/" element={<Landingpage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signup_as_contractor" element={<SignupAsContractor />} />
-        <Route path="/signup_as_musician" element={<SignupAsMusician />} />
+        <Route path="/signup_as_musician" element={<SignupAsMusician loginMusician={loginMusician} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/create_job" element={<CreateJob />} />
         <Route path="/my_jobs" element={<MyJobs />} />

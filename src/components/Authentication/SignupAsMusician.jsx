@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { baseUrl, headers } from '../../Globals'
 import { Link } from 'react-router-dom'
 
-const SignupAsMusician = () => {
+const SignupAsMusician = ({ loginMusician }) => {
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -11,7 +11,8 @@ const SignupAsMusician = () => {
   const [instrument, setInstrument] = useState('')
   const [location, setLocation] = useState('')
   const [bio, setBio] = useState('')
-  const [media, setMedia] = useState()
+  const [media1, setMedia1] = useState('')
+  const [media2, setMedia2] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -25,7 +26,8 @@ const SignupAsMusician = () => {
         instrument,
         location,
         bio,
-        media
+        media1,
+        media2
       }
     }
 
@@ -34,6 +36,11 @@ const SignupAsMusician = () => {
       headers,
       body: JSON.stringify(strongParams)
     })
+      .then(r => r.json())
+      .then(data => {
+        loginMusician(data.musician)
+        localStorage.setItem('jwt', data.token)
+      })
   }
 
 
@@ -55,7 +62,7 @@ const SignupAsMusician = () => {
           </div>
           <div>
             <label htmlFor='password'>Password: </label>
-            <input type='text' name='password' id='password' value={ password } onChange={e => setPassword(e.target.value)} />
+            <input type='password' name='password' id='password' value={ password } onChange={e => setPassword(e.target.value)} />
           </div>
           <div>
             <label htmlFor='instrument'>Instrument(s): </label>
@@ -67,11 +74,12 @@ const SignupAsMusician = () => {
           </div>
           <div>
             <label htmlFor='bio'>Bio: </label>
-            <input type='text' name='bio' id='bio' value={ bio } onChange={e => setBio(e.target.value)} />
+            <textarea type='text' name='bio' id='bio' value={ bio } onChange={e => setBio(e.target.value)} />
           </div>
           <div>
-            <label htmlFor='media'>Import a video or audio file of you performing: </label>
-            <input type='file' name='media' id='media' value={ media } onChange={e => setMedia(e.target.value)} />
+            <label htmlFor='media1'>Import two YouTube videos of you performing: </label>
+            <input type='text' name='media1' id='media1' value={ media1 } onChange={e => setMedia1(e.target.value)} />
+            <input type='text' name='media2' id='media2' value={ media2 } onChange={e => setMedia2(e.target.value)} />
           </div>
 
           <input type='submit' value='Create account' />
