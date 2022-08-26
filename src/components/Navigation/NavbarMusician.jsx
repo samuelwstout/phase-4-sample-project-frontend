@@ -17,7 +17,7 @@ const NavbarMusician = ({logoutMusician}) => {
       <li><Link to="/">Freenote</Link></li>
         <li><Link to="/find_work">Find Work</Link></li>
         <li><Link to="/my_applications">My Applications</Link></li>
-        <li><a onClick={ handleLogout }>Logout</a></li>
+        <li onClick={ handleLogout }>Logout</li>
       </ul>
     </div>
   )

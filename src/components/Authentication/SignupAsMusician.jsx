@@ -2,36 +2,34 @@ import React, { useState } from 'react'
 import { baseUrl, headers } from '../../Globals'
 import { Link, useNavigate } from 'react-router-dom'
 
-const SignupAsMusician = ({ loginMusician, loggedIn }) => {
+const SignupAsMusician = ({ loginMusician }) => {
 
   const navigate = useNavigate()
 
-  // if (loggedIn) navigate('/find_work')
-
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
+  const [first_name, setFirstName] = useState('')
+  const [last_name, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [instrument, setInstrument] = useState('')
   const [location, setLocation] = useState('')
   const [bio, setBio] = useState('')
-  const [media1, setMedia1] = useState('')
-  const [media2, setMedia2] = useState('')
+  const [media_url1, setMedia1] = useState('')
+  const [media_url2, setMedia2] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
     const strongParams = {
       musician: {
-        firstName,
-        lastName,
+        first_name,
+        last_name,
         email,
         password,
         instrument,
         location,
         bio,
-        media1,
-        media2
+        media_url1,
+        media_url2
       }
     }
 
@@ -44,6 +42,7 @@ const SignupAsMusician = ({ loginMusician, loggedIn }) => {
       .then(data => {
         loginMusician(data.musician)
         localStorage.setItem('jwt', data.token)
+        navigate('/find_work')
       })
   }
 
@@ -54,11 +53,11 @@ const SignupAsMusician = ({ loginMusician, loggedIn }) => {
         <form onSubmit={ handleSubmit }>
           <div>
             <label htmlFor='first_name'>First name: </label>
-            <input type='text' name='first name' id='first_name' value={ firstName } onChange={e => setFirstName(e.target.value)} />
+            <input type='text' name='first name' id='first_name' value={ first_name } onChange={e => setFirstName(e.target.value)} />
           </div>
           <div>
             <label htmlFor='last_name'>Last name: </label>
-            <input type='text' name='last name' id='last_name' value={ lastName } onChange={e => setLastName(e.target.value)} />
+            <input type='text' name='last name' id='last_name' value={ last_name } onChange={e => setLastName(e.target.value)} />
           </div>
           <div>
             <label htmlFor='email'>Email: </label>
@@ -82,8 +81,8 @@ const SignupAsMusician = ({ loginMusician, loggedIn }) => {
           </div>
           <div>
             <label htmlFor='media1'>Import two YouTube videos of you performing: </label>
-            <input type='text' name='media1' id='media1' value={ media1 } onChange={e => setMedia1(e.target.value)} />
-            <input type='text' name='media2' id='media2' value={ media2 } onChange={e => setMedia2(e.target.value)} />
+            <input type='text' name='media1' id='media1' value={ media_url1 } onChange={e => setMedia1(e.target.value)} />
+            <input type='text' name='media2' id='media2' value={ media_url2 } onChange={e => setMedia2(e.target.value)} />
           </div>
 
           <input type='submit' value='Create account' />

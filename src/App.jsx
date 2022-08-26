@@ -21,7 +21,7 @@ const App = () => {
     setCurrentMusician(musician)
     setLoggedIn(true)
   }
-
+  
   const logoutMusician = () => {
     setCurrentMusician({})
     setLoggedIn(false)
@@ -41,16 +41,17 @@ const App = () => {
       .then(r => r.json())
       .then(musician => loginMusician(musician))
     } 
-  }, [])
+  }, [loggedIn])
 
   return (
     <Router>
+      { loggedIn ? <h1>Hey, you're logged in!</h1> : null}
       <Routes>
         <Route path="/" element={<Landingpage />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signup_as_contractor" element={<SignupAsContractor />} />
-        <Route path="/signup_as_musician" element={<SignupAsMusician loggedIn={loggedIn} loginMusician={loginMusician} />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/signup_as_musician" element={<SignupAsMusician loginMusician={loginMusician} />} />
+        <Route path="/login" element={<Login loginMusician={loginMusician}/>} />
         <Route path="/create_job" element={<CreateJob />} />
         <Route path="/my_jobs" element={<MyJobs />} />
         {/* When a contractor clicks on a job in 'my jobs'. /my_jobs/job/:id */}
