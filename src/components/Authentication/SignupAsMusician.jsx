@@ -1,8 +1,12 @@
 import React, { useState } from 'react'
 import { baseUrl, headers } from '../../Globals'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
-const SignupAsMusician = ({ loginMusician }) => {
+const SignupAsMusician = ({ loginMusician, loggedIn }) => {
+
+  const navigate = useNavigate()
+
+  // if (loggedIn) navigate('/find_work')
 
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
