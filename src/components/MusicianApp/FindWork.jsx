@@ -1,9 +1,10 @@
 import React from 'react'
 import NavbarMusician from '../Navigation/NavbarMusician'
 
-const FindWork = ({logoutMusician}) => {
+const FindWork = ({logoutMusician, currentMusician}) => {
   return (
     <div>
+        <h2>Hey, {currentMusician.first_name}!</h2>
         <NavbarMusician logoutMusician={logoutMusician} />
         <input placeholder='search'></input>
         <input type='submit'></input>

@@ -45,7 +45,6 @@ const App = () => {
 
   return (
     <Router>
-      { loggedIn ? <h1>Hey, you're logged in!</h1> : null}
       <Routes>
         <Route path="/" element={<Landingpage />} />
         <Route path="/signup" element={<Signup loggedIn={loggedIn} />} />
@@ -56,7 +55,7 @@ const App = () => {
         <Route path="/my_jobs" element={<MyJobs />} />
         {/* When a contractor clicks on a job in 'my jobs'. /my_jobs/job/:id */}
         <Route path="/contractor_profile" element={<ContractorProfile />} />
-        <Route path="/find_work" element={<FindWork logoutMusician={logoutMusician} />} />
+        <Route path="/find_work" element={<FindWork logoutMusician={logoutMusician} currentMusician={currentMusician} />} />
         {/* When musician clicks 'apply' on a job posting (/find_work/job/:id) */}
         <Route path="/my_applications" element={<MyApplications />} />
         <Route path="/musician_profile"></Route>
