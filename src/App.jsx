@@ -48,7 +48,7 @@ const App = () => {
       { loggedIn ? <h1>Hey, you're logged in!</h1> : null}
       <Routes>
         <Route path="/" element={<Landingpage />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<Signup loggedIn={loggedIn} />} />
         <Route path="/signup_as_contractor" element={<SignupAsContractor />} />
         <Route path="/signup_as_musician" element={<SignupAsMusician loginMusician={loginMusician} />} />
         <Route path="/login" element={<Login loginMusician={loginMusician}/>} />

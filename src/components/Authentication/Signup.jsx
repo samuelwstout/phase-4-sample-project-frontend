@@ -1,7 +1,16 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, {useEffect} from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
-const Signup = () => {
+const Signup = ({loggedIn}) => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedIn) {
+      navigate('/find_work')
+    }
+  }, [loggedIn])
+
   return (
     <div>
         <h1>Join as musician or contractor</h1>
